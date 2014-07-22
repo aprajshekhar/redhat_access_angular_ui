@@ -52,7 +52,7 @@ describe('Case Controllers', function() {
         expect(mockScope.fileDescription).toEqual('');
     }));
 
-    it('should get selected file', inject(function($controller) {
+  /*  it('should get selected file', inject(function($controller) {
         var element = angular.element('<div ><button  ng-click="getFile()" ng-disabled="disabled" class="btn">Attach local file</button><div ><input id="fileUploader" type="file" value="/tmp/test.txt" rha-on-change="selectFile" ng-model="file" ng-disabled="enabled"/></div></div><div ><div >{{fileName}}</div></div></div><div ><div ><span></span></div></div><div ><div class="col-xs-12"><input  placeholder="File description" ng-model="fileDescription" ng-disabled="disabled" class="form-control"/></div></div><div class="row rha-create-field"><div class="col-xs-12"><button ng-disabled="fileName == NO_FILE_CHOSEN || disabled" style="float: right;" ng-click="addFile(fileUploaderForm)" class="btn">Add</button></div>');
         var e = compile(element)(mockScope);
         $("body").append(e);
@@ -73,28 +73,35 @@ describe('Case Controllers', function() {
         expect(mockScope.selectFile).toBeDefined();
         mockScope.selectFile();
 
-    }));
+    }));*/
 
  it('should add the selected file', inject(function($controller) {
-        var element = angular.element('<div ><button  ng-click="getFile()" ng-disabled="disabled" class="btn">Attach local file</button><div ><input id="fileUploader" type="file" value="/tmp/test.txt" rha-on-change="selectFile" ng-model="file" ng-disabled="enabled"/></div></div><div ><div >{{fileName}}</div></div></div><div ><div ><span></span></div></div><div ><div class="col-xs-12"><input  placeholder="File description" ng-model="fileDescription" ng-disabled="disabled" class="form-control"/></div></div><div class="row rha-create-field"><div class="col-xs-12"><button ng-disabled="fileName == NO_FILE_CHOSEN || disabled" style="float: right;" ng-click="addFile(fileUploaderForm)" class="btn">Add</button></div>');
+        /*var element = angular.element('<div ><button  ng-click="getFile()" ng-disabled="disabled" class="btn">Attach local file</button><div ><input id="fileUploader" type="file" value="/tmp/test.txt" rha-on-change="selectFile" ng-model="file" ng-disabled="enabled"/></div></div><div ><div >{{fileName}}</div></div></div><div ><div ><span></span></div></div><div ><div class="col-xs-12"><input  placeholder="File description" ng-model="fileDescription" ng-disabled="disabled" class="form-control"/></div></div><div class="row rha-create-field"><div class="col-xs-12"><button ng-disabled="fileName == NO_FILE_CHOSEN || disabled" style="float: right;" ng-click="addFile(fileUploaderForm)" class="btn">Add</button></div>');
         var e = compile(element)(mockScope);
         $("body").append(e);
         mockScope.$digest();
        
         debugger;
-        console.log('test' + e.html());
+        console.log('test' + e.html());*/
         $controller('AttachLocalFile', {
             $scope: mockScope,
             AttachmentsService: attachmentsService,
             securityService: securityService
         });
-
+        var fileObj ={
+            size:12000,
+            name:"test.tar"
+        };
+       var files = new Array();
+        files.push(fileObj);
+       /*
         mockScope.fileObj = "test data";
         mockScope.fileDescription = "test desc";
         mockScope.fileName = "test.gz";
-        mockScope.fileSize = 1000;
+        mockScope.fileSize = 1000;*/
         expect(mockScope.selectFile).toBeDefined();
-        mockScope.selectFile();
+        debugger;
+        mockScope.selectFile(files);
 
     }));
 

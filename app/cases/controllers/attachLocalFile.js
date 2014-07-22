@@ -38,8 +38,8 @@ angular.module('RedhatAccess.cases')
       $('#fileUploader').click();
     };
 
-    $scope.selectFile = function() {
-      $scope.fileObj = $('#fileUploader')[0].files[0];
+    $scope.selectFile = function(files) {
+      $scope.fileObj = files[0];//$('#fileUploader')[0].files[0];
       $scope.fileSize = $scope.fileObj.size;
       $scope.fileName = $scope.fileObj.name;
       $scope.$apply();
